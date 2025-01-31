@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연대투쟁 운동본부</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: #12263a;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+        .title {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #0078d7;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .button:hover {
+            background-color: #005a9e;
+        }
+        .count {
+            font-size: 2em;
+            font-weight: bold;
+            background-color: #0a1726;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        #map {
+            width: 90%;
+            height: 400px;
+            margin-top: 20px;
+            border: 2px solid #12263a;
+            border-radius: 10px;
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+            padding: 10px;
+            width: 90%;
+        }
+        .grid-item {
+            background-color: red;
+            color: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            font-size: 1em;
+            font-weight: bold;
+        }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+    <script>
+        function initMap() {
+            const koreaBounds = {
+                north: 38.623477,
+                south: 33.004106,
+                west: 124.608103,
+                east: 131.879152
+            };
+
+            const map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 36.5, lng: 127.5 },
+                zoom: 7,
+                restriction: {
+                    latLngBounds: koreaBounds,
+                    strictBounds: true,
+                },
+                mapTypeId: 'terrain'
+            });
+        }
+
+        function updateCount() {
+            // Fetch the updated count dynamically (placeholder for real API call)
+            const countElement = document.querySelector('.count');
+            let currentCount = parseInt(countElement.textContent.replace(/,/g, ''));
+            currentCount += 1; // Simulating increment
+            countElement.textContent = currentCount.toLocaleString() + '명';
+        }
+    </script>
+</head>
+<body onload="initMap()">
+    <div class="container">
+        <div class="title">자유대한민국 수호 연대투쟁 운동본부</div>
+        <a href="signup.html" class="button" onclick="updateCount()">대연본 참여하기</a>
+        <div class="count">0명</div>
+    </div>
+    <div id="map"></div>
+    <div class="grid-container">
+        <div class="grid-item">연대투쟁<br>긴급호소문</div>
+        <div class="grid-item">자유대한민국 수호<br>연대투쟁 운동본부 구성</div>
+        <div class="grid-item">전국 & 지역별<br>연대 현황</div>
+        <div class="grid-item">분야별 전문가<br>지원세력 참여하기<br>: 학계, 법조계, 언론계,<br>종교계 등</div>
+        <div class="grid-item">윤석열대통령<br>비상계엄엄 담화문 전문</div>
+        <div class="grid-item">단계별 연대투쟁 전략</div>
+        <div class="grid-item">하이브리드 전쟁</div>
+        <div class="grid-item">연대 참여하기</div>
+        <div class="grid-item">윤석열대통령을 지켜라<br>현재와의 전쟁</div>
+        <div class="grid-item">대연본 연대전략<br>따로 또 같이</div>
+        <div class="grid-item">자유유파를 대표하는<br>언론매체 만들기</div>
+        <div class="grid-item">국민대각성운동</div>
+        <div class="grid-item">운파본용 매체<br>절독독운용</div>
+        <div class="grid-item">코동이이 CIA 신고하기</div>
+        <div class="grid-item">반국가세력 프레임깨기</div>
+        <div class="grid-item">나도 연대 투사</div>
+    </div>
+</body>
+</html>
